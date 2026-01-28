@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException
 from pydantic import BaseModel
 from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 
 
@@ -20,6 +20,7 @@ class OyunDB(Base):
     isim = Column(String, index=True)
     tur = Column(String)
     puan = Column(Integer)
+    yapımcı = Column(String)
 
 
 Base.metadata.create_all(bind=engine)
@@ -29,12 +30,14 @@ class OyunSema(BaseModel):
     isim: str
     tur: str
     puan: int
+    yapımcı: str
 
 
 class OyunGuncelle(BaseModel):
     isim: str | None = None
     tur: str | None = None
     puan: int | None = None
+    yapımcı: str | None  = None
 
 app = FastAPI()
 
@@ -51,7 +54,7 @@ def get_db():
 @app.post("/oyun-ekle")
 def oyun_ekle(oyun: OyunSema, db: Session = Depends(get_db)):
     
-    yeni_oyun = OyunDB(isim=oyun.isim, tur=oyun.tur, puan=oyun.puan)
+    yeni_oyun = OyunDB(isim=oyun.isim, tur=oyun.tur, puan=oyun.puan , yapımcı= oyun.yapımcı)
     db.add(yeni_oyun)  
     db.commit()        
     db.refresh(yeni_oyun)
@@ -97,6 +100,9 @@ def oyun_guncelle(oyun_id: int, guncel_veri: OyunGuncelle, db: Session = Depends
     
     if guncel_veri.puan is not None:
         kayitli_oyun.puan = guncel_veri.puan
+    
+    if guncel_veri.yapımcı is not None:
+        kayitli_oyun.yapımcı =guncel_veri.yapımcı
 
     
     db.commit()
