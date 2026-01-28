@@ -17,8 +17,8 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin.
 
 1.  **Projeyi Klonlayın**
     ```bash
-    git clone [https://github.com/Kalyanamkara/oyun-kutuphanesi-backend.git](https://github.com/Kalyanamkara/oyun-kutuphanesi-backend.git)
-    cd oyun-kutuphanesi-backend
+    git clone [https://github.com/Kalyanamkara/game-library-backend.git](https://github.com/Kalyanamkara/game-library-backend.git)
+    cd game-library-backend
     ```
 
 2.  **Sanal Ortamı Oluşturun ve Aktifleştirin**
