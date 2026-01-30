@@ -8,7 +8,7 @@ from pydantic import BaseModel
 from datetime import datetime ,timedelta
 from jose import jwt, JWTError
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-
+import os
 
 
 SECRET_KEY= "A*@49KDBA)9829e"
@@ -22,7 +22,16 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 
-DATABASE_URL = "sqlite:///./oyunlar.db"
+DATABASE_URL = os.environ.get("DATABASE_URL")
+if DATABASE_URL:
+    if DATABASE_URL.startswith("postgres://"):
+        DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://",1)
+    engine = create_engine(DATABASE_URL)
+else:
+    DATABASE_URL = "sqlite:///./oyunlar.db"
+    engine = create_engine(DATABASE_URL,connect_args={"check_same_thread":False})
+SessionLocal = sessionmaker(autocommit=False,autoflush=False,bind=engine)
+Base = declarative_base()
 
 
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
@@ -211,3 +220,7 @@ def oyun_guncelle(oyun_id: int, guncel_veri: OyunGuncelle, db: Session = Depends
     db.refresh(kayitli_oyun)
     
     return {"mesaj": "Oyun başarıyla güncellendi", "yeni_hal": kayitli_oyun}
+
+
+#.\venv\Scripts\activate
+#Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
