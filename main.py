@@ -9,6 +9,7 @@ from datetime import datetime ,timedelta
 from jose import jwt, JWTError
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 import os
+from fastapi.middleware.cors import CORSMiddleware
 
 
 SECRET_KEY= "A*@49KDBA)9829e"
@@ -70,6 +71,17 @@ class OyunGuncelle(BaseModel):
     yapımcı: str | None  = None
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    
+
+
+)
+
 
 
 class UserCreate(BaseModel):
