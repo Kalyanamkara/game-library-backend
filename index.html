@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="main-container">
+    <h1 class="app-title">🎮 Game Library</h1>
+
+    <div id="login-panel" class="card centered-card">
+        <h3>Login</h3>
+        <input type="text" id="username" class="input-field" placeholder="Username">
+        <input type="password" id="password" class="input-field" placeholder="Password">
+        <button onclick="handleLogin()" class="btn btn-primary">Login</button>
+        
+        <p style="text-align: center; margin-top: 15px; font-size: 0.9rem;">
+            Don't have an account? 
+            <a href="#" onclick="showRegisterScreen()" style="color: #818cf8;">Sign Up</a>
+        </p>
+
+        <p id="error-message" class="error-text"></p>
+    </div>
+
+    <div id="register-panel" class="card centered-card" style="display: none;">
+        <h3>Create Account</h3>
+        <input type="text" id="reg-username" class="input-field" placeholder="Choose a Username">
+        <input type="password" id="reg-password" class="input-field" placeholder="Choose a Password">
+        <button onclick="handleRegister()" class="btn btn-success">Sign Up</button>
+        
+        <p style="text-align: center; margin-top: 15px; font-size: 0.9rem;">
+            Already have an account? 
+            <a href="#" onclick="showLoginScreen()" style="color: #34d399;">Login</a>
+        </p>
+
+        <p id="reg-error-message" class="error-text"></p>
+    </div>
+
+    <div id="dashboard" style="display: none;">
+        <div class="header-row">
+            <h4>My Games</h4>
+            <button onclick="handleLogout()" class="btn btn-outline-danger">Logout</button>
+        </div>
+        
+        <div class="card form-row">
+            <input type="text" id="new-name" class="input-field" placeholder="Game Name">
+            <input type="text" id="new-category" class="input-field" placeholder="Category">
+            <input type="text" id="new-publisher" class="input-field" placeholder="Publisher">
+            <input type="number" id="new-score" class="input-field" placeholder="Score">
+            <button onclick="addGame()" class="btn btn-success">Add Game</button>
+        </div>
+        <div class="search-container" style="margin-bottom: 20px;">
+            <input type="text" id="search-box" class="input-field" placeholder="🔍 Search by name, category or publisher..." onkeyup="searchGames()">
+        </div>
+            
+            
+    
+
+
+        <div id="game-list" class="grid-container"></div>
+    </div>
+</div>
+<div id="edit-modal" class="modal-overlay" style="display: none;">
+    <div class="card modal-content">
+        <h3>Edit Game</h3>
+        <input type="hidden" id="edit-id">
+        
+        <input type="text" id="edit-name" class="input-field" placeholder="Game Name">
+        <input type="text" id="edit-category" class="input-field" placeholder="Category">
+        <input type="text" id="edit-publisher" class="input-field" placeholder="Publisher">
+        <input type="number" id="edit-score" class="input-field" placeholder="Score">
+        
+        <div class="form-row" style="margin-top: 20px;">
+            <button onclick="submitUpdate()" class="btn btn-primary">Save Changes</button>
+            <button onclick="closeEditModal()" class="btn btn-danger">Cancel</button>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+/* ÖNCE HAVALI BİR YAZI TİPİ ÇEKELİM (GOOGLE FONTS) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* GENEL AYARLAR */
+body {
+    background-color: #121212; /* Kapkaranlık arka plan */
+    background-image: radial-gradient(circle at 10% 20%, rgb(33, 33, 64) 0%, rgb(0, 0, 0) 90%);
+    color: #e0e0e0; /* Yazılar beyazımsı */
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+}
+
+.main-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* BAŞLIK TASARIMI */
+.app-title {
+    text-align: center;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    text-shadow: 0 0 10px rgba(52, 152, 219, 0.7); /* Neon parlaması */
+    letter-spacing: 2px;
+}
+
+/* KART TASARIMLARI (Login ve Form Kutuları) */
+.card {
+    background-color: #1e1e2f; /* Koyu lacivert kutular */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Derin gölge */
+    border: 1px solid #333;
+    margin-bottom: 30px;
+}
+
+.centered-card {
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(145deg, #1e1e2f, #25253a);
+}
+
+/* INPUT KUTULARI */
+.input-field {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #121212;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.input-field:focus {
+    border-color: #00d2ff; /* Odaklanınca mavi neon */
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+}
+
+/* BUTONLAR */
+.btn {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary { 
+    background: linear-gradient(45deg, #3a7bd5, #00d2ff); 
+    color: white; 
+    box-shadow: 0 5px 15px rgba(0, 210, 255, 0.4);
+}
+.btn-primary:hover {
+    box-shadow: 0 5px 25px rgba(0, 210, 255, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-success { 
+    background: linear-gradient(45deg, #11998e, #38ef7d); 
+    color: white; 
+    box-shadow: 0 5px 15px rgba(56, 239, 125, 0.4);
+}
+
+.btn-danger { 
+    background: linear-gradient(45deg, #ff416c, #ff4b2b); 
+    color: white;
+}
+
+.btn-outline-danger { 
+    background: transparent; 
+    border: 2px solid #ff4b2b; 
+    color: #ff4b2b; 
+    width: auto;
+    padding: 8px 20px;
+}
+.btn-outline-danger:hover {
+    background: #ff4b2b;
+    color: white;
+}
+
+/* HATA MESAJI */
+.error-text { 
+    color: #ff4b2b; 
+    text-align: center; 
+    margin-top: 15px; 
+    font-weight: bold;
+}
+
+/* ÜST KISIM (BAŞLIK VE LOGOUT) */
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 15px;
+}
+.header-row h4 {
+    font-size: 1.8rem;
+    margin: 0;
+    color: #00d2ff;
+}
+
+/* OYUN EKLEME FORMU YAN YANA DURSUN */
+.form-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    background-color: #1e1e2f;
+}
+.form-row .input-field { margin-bottom: 0; flex: 1; min-width: 150px; }
+.form-row .btn { width: auto; flex-grow: 0; }
+
+/* OYUN LİSTESİ IZGARASI */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+/* OYUN KARTI ÖZEL STİLİ */
+.game-card {
+    background: #25253a;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border-top: 4px solid #3a7bd5; /* Üstte renkli çizgi */
+    position: relative;
+    overflow: hidden;
+}
+
+.game-card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 10px 30px rgba(0, 210, 255, 0.2);
+    border-top-color: #00d2ff;
+}
+
+.game-card h3 {
+    color: white;
+    margin-top: 10px;
+    font-size: 1.4rem;
+}
+
+.game-score {
+    display: inline-block;
+    background-color: #ff9f43;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin: 15px 0;
+    box-shadow: 0 0 10px rgba(255, 159, 67, 0.5);
+}
+
+.modal-overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    backdrop-filter: blur(5px); 
+    z-index: 1000; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.modal-content {
+    width: 400px; 
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 50px rgba(129, 140, 248, 0.3); 
+    animation: popIn 0.3s ease; 
+}
+
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
